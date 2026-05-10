@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maâlem | معلم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --clay: #C4622D;
+      --clay-light: #E07A45;
+      --sand: #F5ECD7;
+      --sand-dark: #EAD9B8;
+      --ink: #1C1410;
+      --ink-soft: #3D2B1F;
+      --cream: #FBF6EE;
+      --gold: #D4A843;
+      --tile-blue: #2B5F75;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    .pattern-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image:
+        repeating-linear-gradient(45deg, var(--clay) 0, var(--clay) 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(-45deg, var(--clay) 0, var(--clay) 1px, transparent 0, transparent 50%);
+      background-size: 30px 30px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(251, 246, 238, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 98, 45, 0.15);
+    }
+
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--clay);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    .nav-cta {
+      background: var(--clay);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--clay-light); transform: translateY(-1px); }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-blob {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,98,45,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 780px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--sand-dark);
+      color: var(--clay);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(196,98,45,0.2);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    h1 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--clay);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-sub strong { color: var(--clay); font-weight: 700; }
+
+    .form-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 40px rgba(28,20,16,0.1);
+      max-width: 560px;
+      margin: 0 auto;
+      border: 1px solid var(--sand-dark);
+    }
+
+    .form-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--ink); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
+
+    select, input, textarea {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--sand-dark);
+      border-radius: 10px;
+      background: var(--cream);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      direction: rtl;
+    }
+
+    select:focus, input:focus, textarea:focus {
+      border-color: var(--clay);
+      box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+    }
+
+    textarea { resize: none; height: 80px; }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--clay);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: var(--clay-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(196,98,45,0.35);
+    }
+
+    .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .success-msg .check { font-size: 3rem; margin-bottom: 0.8rem; }
+
+    .success-msg h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--clay);
+      margin-bottom: 0.4rem;
+    }
+
+    .success-msg p { color: var(--ink-soft); font-size: 0.95rem; }
+
+    .section { padding: 5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--clay);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+
+    .step {
+      background: white;
+      border-radius: 16px;
+      padding: 1.8rem;
+      border: 1px solid var(--sand-dark);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(28,20,16,0.08); }
+
+    .step-num {
+      width: 40px; height: 40px;
+      background: var(--clay);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+
+    .cats-section {
+      background: var(--ink);
+      padding: 5rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cats-inner { max-width: 900px; margin: 0 auto; position: relative; }
+    .cats-section .section-label { color: var(--gold); }
+    .cats-section .section-title { color: white; }
+
+    .cats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; }
+
+    .cat-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 1.4rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: white;
+    }
+
+    .cat-item:hover { background: rgba(196,98,45,0.3); border-color: var(--clay); transform: translateY(-3px); }
+    .cat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .cat-name { font-size: 0.9rem; font-weight: 700; }
+
+    .trust-section { background: var(--sand); padding: 4rem 1.5rem; }
+
+    .trust-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .trust-item .num { font-size: 2.8rem; font-weight: 900; color: var(--clay); line-height: 1; margin-bottom: 0.3rem; }
+    .trust-item p { font-size: 0.9rem; color: var(--ink-soft); font-weight: 500; }
+
+    footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 2.5rem 1.5rem; font-size: 0.85rem; }
+    footer strong { color: var(--clay); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--clay); }
+    .footer-social { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+    .footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); text-decoration: none; font-size: 1.1rem; transition: all 0.2s; }
+    .footer-social a:hover { border-color: var(--clay); color: var(--clay); }
+    .footer-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 auto 1.2rem; }
+
+    .zellige-divider {
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--clay) 0px, var(--clay) 20px,
+        var(--gold) 20px, var(--gold) 40px,
+        var(--tile-blue) 40px, var(--tile-blue) 60px,
+        var(--sand-dark) 60px, var(--sand-dark) 80px
+      );
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .hero { padding: 6rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      معّلم
+      <span>Maâlem</span>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})">
+      نشر خدمة
+    </button>
+  </nav>
+
+  <section class="hero">
+    <div class="pattern-bg"></div>
+    <div class="hero-blob"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">🇲🇦 &nbsp; Casablanca — الدار البيضاء</div>
+
+      <h1>
+        كل مشكل<br/>
+        <em>عندو</em> معلمو
+      </h1>
+
+      <p class="hero-sub">
+        نشر الخدمة ديالك، و <strong>معلمين قريبين منك</strong> غادي يعطوك العروض.<br/>
+        <span style="font-size:0.9em; opacity:0.7">Trouve le bon artisan, au meilleur prix.</span>
+      </p>
+
+      <div class="form-card" id="form-section">
+        <p class="form-title">📋 شنو خاصك؟</p>
+
+        <div id="form-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>نوع الخدمة</label>
+              <select id="service">
+                <option value="">اختار...</option>
+                <option>سباكة (Plomberie)</option>
+                <option>كهرباء (Electricite)</option>
+                <option>دهن (Peinture)</option>
+                <option>نجارة (Menuiserie)</option>
+                <option>بلاط (Carrelage)</option>
+                <option>تكييف (Climatisation)</option>
+                <option>قفل (Serrurerie)</option>
+                <option>اخرى</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>المدينة</label>
+              <select id="city" onchange="updateNeighborhoods()">
+                <option value="">اختار...</option>
+                <option value="الدار البيضاء">الدار البيضاء (Casablanca)</option>
+                <option value="الرباط">الرباط (Rabat)</option>
+                <option value="مراكش">مراكش (Marrakech)</option>
+                <option value="فاس">فاس (Fes)</option>
+                <option value="طنجة">طنجة (Tanger)</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>الحي (Quartier)</label>
+              <select id="neighborhood">
+                <option value="">اختار المدينة أولاً...</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>وصف المشكل</label>
+              <textarea id="desc" placeholder="مثلا: كاين تسريب ديال الماء فالحمام..."></textarea>
+            </div>
+            <div class="form-group full">
+              <label>رقم الهاتف</label>
+              <input type="tel" id="phone" placeholder="06XXXXXXXX" style="direction:ltr; text-align:right;" />
+            </div>
+          </div>
+          <button class="submit-btn" onclick="handleSubmit()">
+            🔍 &nbsp; دوز طلبك للمعلمين
+          </button>
+        </div>
+
+        <div class="success-msg" id="success">
+          <div class="check">✅</div>
+          <h3>طلبك وصل!</h3>
+          <p>غادي نتواصلو معاك على واتساب فاقرب وقت ممكن<br/>
+          <span style="color:var(--clay); font-weight:700;">مع عروض من معلمين قريبين منك.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="zellige-divider"></div>
+
+  <section style="background: var(--cream);">
+    <div class="section">
+      <p class="section-label">كيفاش خدام</p>
+      <h2 class="section-title">3 خطوات وكاملات</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>نشر الطلب</h3>
+          <p>قول لنا شنو خاصك — السباكة، الكهرباء، الدهن، اي خدمة.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>استقبل العروض</h3>
+          <p>معلمين قريبين منك غادي يشوفو طلبك ويعطوك عروض بالثمن و الوقت.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>اختار المناسب</h3>
+          <p>شوف التقييمات والاسعار واختار اللي يناسبك — بلا ضغط.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cats-section">
+    <div class="cats-inner">
+      <p class="section-label">الخدمات</p>
+      <h2 class="section-title">كل الحرف في مكان واحد</h2>
+      <div class="cats-grid">
+        <div class="cat-item"><div class="cat-icon">🔧</div><div class="cat-name">سباكة</div></div>
+        <div class="cat-item"><div class="cat-icon">⚡</div><div class="cat-name">كهرباء</div></div>
+        <div class="cat-item"><div class="cat-icon">🖌️</div><div class="cat-name">دهن</div></div>
+        <div class="cat-item"><div class="cat-icon">🚪</div><div class="cat-name">نجارة</div></div>
+        <div class="cat-item"><div class="cat-icon">🏠</div><div class="cat-name">بلاط</div></div>
+        <div class="cat-item"><div class="cat-icon">❄️</div><div class="cat-name">تكييف</div></div>
+        <div class="cat-item"><div class="cat-icon">🔑</div><div class="cat-name">قفل</div></div>
+        <div class="cat-item"><div class="cat-icon">➕</div><div class="cat-name">واكثر...</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="zellige-divider"></div>
+
+  <section class="trust-section">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="num">100%</div>
+        <p>معلمين موثوقين ومقيمين</p>
+      </div>
+      <div class="trust-item">
+        <div class="num">مجاني</div>
+        <p>نشر الطلب بلا مصاريف</p>
+      </div>
+      <div class="trust-item">
+        <div class="num">انت</div>
+        <p>اللي تختار العرض المناسب</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/maalam.official" target="_blank" title="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61588919775378" target="_blank" title="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="mailto:maalam.contact@gmail.com" title="Email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="mailto:maalam.contact@gmail.com">Contact</a>
+    </div>
+    <div class="footer-divider"></div>
+    <p>&copy; 2025 <strong>Maâlem | معلم</strong> · Casablanca, Maroc</p>
+  </footer>
+
+  <script>
+    async function handleSubmit() {
+      const service = document.getElementById('service').value;
+      const city = document.getElementById('city').value;
+      const neighborhood = document.getElementById('neighborhood').value;
+      const phone = document.getElementById('phone').value.trim();
+      const desc = document.getElementById('desc').value.trim();
+
+      if (!service || !city || !phone) {
+        alert('Please fill in service, city, and phone number');
+        return;
+      }
+
+      const btn = document.querySelector('.submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        await fetch('https://hooks.zapier.com/hooks/catch/27461970/uvcdceo/', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            service_type: service,
+            city: city,
+            neighborhood: neighborhood,
+            phone: phone,
+            job_description: desc,
+            submission_date: new Date().toISOString().split('T')[0],
+            source: 'Landing Page'
+          })
+        });
+
+        document.getElementById('form-body').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Connection error, please try again');
+        btn.disabled = false;
+        btn.innerHTML = 'Try again';
+      }
+    }
+
+    function updateNeighborhoods() {
+      const city = document.getElementById('city').value;
+      const neighborhood = document.getElementById('neighborhood');
+      const neighborhoods = {
+        'الدار البيضاء': ['المعاريف (Maarif)', 'عين الشق (Ain Chock)', 'عين السبع (Ain Sebaa)', 'البرنوصي (Bernoussi)', 'بن مسيك (Ben Msick)', 'الحي المحمدي (Hay Mohammadi)', 'الفداء (Fida)', 'مرس السلطان (Mers Sultan)', 'انفا (Anfa)', 'سيدي عثمان (Sidi Othmane)', 'حي اخر'],
+        'الرباط': ['أكدال (Agdal)', 'حسان (Hassan)', 'الرياض (Ryad)', 'سويسي (Souissi)', 'المدينة القديمة', 'يعقوب المنصور (Yacoub Mansour)', 'حي اخر'],
+        'مراكش': ['جليز (Gueliz)', 'هيفرناج (Hivernage)', 'المدينة القديمة', 'مناره (Menara)', 'سيدي يوسف بن علي', 'حي اخر'],
+        'فاس': ['المدينة القديمة', 'فاس الجديد', 'العرائش (Atlas)', 'مرينيد (Merinide)', 'حي اخر'],
+        'طنجة': ['المدينة القديمة', 'مالاباطا (Malabata)', 'المغرب العربي', 'بني مكادة (Beni Makada)', 'حي اخر']
+      };
+      neighborhood.innerHTML = '<option value="">اختار الحي...</option>';
+      if (city && neighborhoods[city]) {
+        neighborhoods[city].forEach(n => {
+          const opt = document.createElement('option');
+          opt.value = n;
+          opt.textContent = n;
+          neighborhood.appendChild(opt);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
