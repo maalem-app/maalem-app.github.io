@@ -3,40 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maâlem | معلم</title>
+  <title>Fixanza | فيكسانزا</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --clay: #C4622D;
-      --clay-light: #E07A45;
-      --sand: #F5ECD7;
-      --sand-dark: #EAD9B8;
-      --ink: #1C1410;
-      --ink-soft: #3D2B1F;
-      --cream: #FBF6EE;
-      --gold: #D4A843;
-      --tile-blue: #2B5F75;
+      --orange: #E8632A;
+      --orange-light: #F07840;
+      --charcoal: #1C1C1E;
+      --charcoal-soft: #2E2E30;
+      --gray: #6B6B6B;
+      --light: #F5F5F5;
+      --white: #FFFFFF;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Tajawal', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
+      background: var(--white);
+      color: var(--charcoal);
       overflow-x: hidden;
     }
 
     .pattern-bg {
       position: absolute;
       inset: 0;
-      opacity: 0.06;
+      opacity: 0.04;
       background-image:
-        repeating-linear-gradient(45deg, var(--clay) 0, var(--clay) 1px, transparent 0, transparent 50%),
-        repeating-linear-gradient(-45deg, var(--clay) 0, var(--clay) 1px, transparent 0, transparent 50%);
+        repeating-linear-gradient(45deg, var(--orange) 0, var(--orange) 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(-45deg, var(--orange) 0, var(--orange) 1px, transparent 0, transparent 50%);
       background-size: 30px 30px;
     }
 
@@ -47,31 +45,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 2.5rem;
-      background: rgba(251, 246, 238, 0.85);
+      padding: 1rem 2.5rem;
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(196, 98, 45, 0.15);
+      border-bottom: 1px solid rgba(232,99,42,0.12);
     }
 
-    .nav-logo {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--clay);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-logo span {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.85rem;
-      color: var(--ink-soft);
-      font-weight: 400;
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
     }
 
     .nav-cta {
-      background: var(--clay);
+      background: var(--orange);
       color: white;
       border: none;
       padding: 0.6rem 1.4rem;
@@ -83,7 +70,7 @@
       transition: all 0.2s;
     }
 
-    .nav-cta:hover { background: var(--clay-light); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
 
     .hero {
       position: relative;
@@ -101,7 +88,7 @@
       width: 600px;
       height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(196,98,45,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(232,99,42,0.1) 0%, transparent 70%);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
@@ -120,51 +107,47 @@
 
     .hero-badge {
       display: inline-block;
-      background: var(--sand-dark);
-      color: var(--clay);
+      background: var(--light);
+      color: var(--orange);
       font-size: 0.8rem;
       font-weight: 700;
       padding: 0.35rem 1rem;
       border-radius: 50px;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(196,98,45,0.2);
+      border: 1px solid rgba(232,99,42,0.2);
     }
 
     h1 {
       font-size: clamp(2.8rem, 7vw, 5rem);
       font-weight: 900;
       line-height: 1.1;
-      color: var(--ink);
+      color: var(--charcoal);
       margin-bottom: 1rem;
     }
 
-    h1 em {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: var(--clay);
-    }
+    h1 span { color: var(--orange); }
 
     .hero-sub {
       font-size: 1.15rem;
       font-weight: 400;
-      color: var(--ink-soft);
+      color: var(--gray);
       line-height: 1.7;
       margin-bottom: 2.5rem;
     }
 
-    .hero-sub strong { color: var(--clay); font-weight: 700; }
+    .hero-sub strong { color: var(--orange); font-weight: 700; }
 
     .form-card {
       background: white;
       border-radius: 20px;
       padding: 2rem;
-      box-shadow: 0 8px 40px rgba(28,20,16,0.1);
+      box-shadow: 0 8px 40px rgba(28,28,30,0.1);
       max-width: 560px;
       margin: 0 auto;
-      border: 1px solid var(--sand-dark);
+      border: 1px solid var(--light);
     }
 
-    .form-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--ink); }
+    .form-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--charcoal); }
 
     .form-grid {
       display: grid;
@@ -176,31 +159,31 @@
     .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
     .form-group.full { grid-column: 1 / -1; }
 
-    label { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
+    label { font-size: 0.82rem; font-weight: 600; color: var(--gray); }
 
     select, input, textarea {
       font-family: 'Tajawal', sans-serif;
       font-size: 0.95rem;
       padding: 0.7rem 1rem;
-      border: 1.5px solid var(--sand-dark);
+      border: 1.5px solid #E0E0E0;
       border-radius: 10px;
-      background: var(--cream);
-      color: var(--ink);
+      background: var(--light);
+      color: var(--charcoal);
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       direction: rtl;
     }
 
     select:focus, input:focus, textarea:focus {
-      border-color: var(--clay);
-      box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(232,99,42,0.1);
     }
 
     textarea { resize: none; height: 80px; }
 
     .submit-btn {
       width: 100%;
-      background: var(--clay);
+      background: var(--orange);
       color: white;
       border: none;
       padding: 1rem;
@@ -214,9 +197,9 @@
     }
 
     .submit-btn:hover {
-      background: var(--clay-light);
+      background: var(--orange-light);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(196,98,45,0.35);
+      box-shadow: 0 6px 20px rgba(232,99,42,0.35);
     }
 
     .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
@@ -229,15 +212,8 @@
     }
 
     .success-msg .check { font-size: 3rem; margin-bottom: 0.8rem; }
-
-    .success-msg h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--clay);
-      margin-bottom: 0.4rem;
-    }
-
-    .success-msg p { color: var(--ink-soft); font-size: 0.95rem; }
+    .success-msg h3 { font-size: 1.3rem; font-weight: 800; color: var(--orange); margin-bottom: 0.4rem; }
+    .success-msg p { color: var(--gray); font-size: 0.95rem; }
 
     .section { padding: 5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
 
@@ -245,7 +221,7 @@
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 2px;
-      color: var(--clay);
+      color: var(--orange);
       text-transform: uppercase;
       margin-bottom: 0.5rem;
       text-align: center;
@@ -256,7 +232,7 @@
       font-weight: 900;
       text-align: center;
       margin-bottom: 3rem;
-      color: var(--ink);
+      color: var(--charcoal);
     }
 
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
@@ -265,15 +241,15 @@
       background: white;
       border-radius: 16px;
       padding: 1.8rem;
-      border: 1px solid var(--sand-dark);
+      border: 1px solid #E0E0E0;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(28,20,16,0.08); }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(28,28,30,0.08); }
 
     .step-num {
       width: 40px; height: 40px;
-      background: var(--clay);
+      background: var(--orange);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -285,17 +261,17 @@
     }
 
     .step h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; }
-    .step p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+    .step p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
 
     .cats-section {
-      background: var(--ink);
+      background: var(--charcoal);
       padding: 5rem 1.5rem;
       position: relative;
       overflow: hidden;
     }
 
     .cats-inner { max-width: 900px; margin: 0 auto; position: relative; }
-    .cats-section .section-label { color: var(--gold); }
+    .cats-section .section-label { color: var(--orange); }
     .cats-section .section-title { color: white; }
 
     .cats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; }
@@ -311,11 +287,11 @@
       color: white;
     }
 
-    .cat-item:hover { background: rgba(196,98,45,0.3); border-color: var(--clay); transform: translateY(-3px); }
+    .cat-item:hover { background: rgba(232,99,42,0.25); border-color: var(--orange); transform: translateY(-3px); }
     .cat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
     .cat-name { font-size: 0.9rem; font-weight: 700; }
 
-    .trust-section { background: var(--sand); padding: 4rem 1.5rem; }
+    .trust-section { background: var(--light); padding: 4rem 1.5rem; }
 
     .trust-inner {
       max-width: 800px;
@@ -326,29 +302,21 @@
       text-align: center;
     }
 
-    .trust-item .num { font-size: 2.8rem; font-weight: 900; color: var(--clay); line-height: 1; margin-bottom: 0.3rem; }
-    .trust-item p { font-size: 0.9rem; color: var(--ink-soft); font-weight: 500; }
+    .trust-item .num { font-size: 2.8rem; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 0.3rem; }
+    .trust-item p { font-size: 0.9rem; color: var(--gray); font-weight: 500; }
 
-    footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 2.5rem 1.5rem; font-size: 0.85rem; }
-    footer strong { color: var(--clay); }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.4); text-align: center; padding: 2.5rem 1.5rem; font-size: 0.85rem; }
+    footer strong { color: var(--orange); }
     .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
     .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--clay); }
+    .footer-links a:hover { color: var(--orange); }
     .footer-social { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1.5rem; }
     .footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); text-decoration: none; font-size: 1.1rem; transition: all 0.2s; }
-    .footer-social a:hover { border-color: var(--clay); color: var(--clay); }
+    .footer-social a:hover { border-color: var(--orange); color: var(--orange); }
     .footer-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 auto 1.2rem; }
+    .footer-logo { height: 36px; width: auto; margin: 0 auto 1.2rem; display: block; }
 
-    .zellige-divider {
-      height: 6px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--clay) 0px, var(--clay) 20px,
-        var(--gold) 20px, var(--gold) 40px,
-        var(--tile-blue) 40px, var(--tile-blue) 60px,
-        var(--sand-dark) 60px, var(--sand-dark) 80px
-      );
-    }
+    .orange-divider { height: 4px; background: var(--orange); }
 
     @media (max-width: 600px) {
       nav { padding: 1rem 1.2rem; }
@@ -361,13 +329,18 @@
 <body>
 
   <nav>
-    <div class="nav-logo">
-      معّلم
-      <span>Maâlem</span>
-    </div>
     <button class="nav-cta" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})">
       نشر خدمة
     </button>
+    <div class="nav-logo">
+      <!-- Light logo (black wordmark) for white nav -->
+      <svg height="32" viewBox="100 170 560 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M207.211 267V185.1H226.165V267H207.211ZM233.956 267L269.173 218.445V232.251L235.477 185.1H257.005L280.288 217.977L271.279 218.094L294.211 185.1H314.803L281.341 231.432V217.86L316.792 267H294.913L270.811 232.251H279.469L255.718 267H233.956ZM311.733 267L348.237 185.1H366.957L403.578 267H383.688L353.736 194.694H361.224L331.155 267H311.733ZM329.985 249.45L335.016 235.059H377.136L382.284 249.45H329.985ZM401.545 267V185.1H417.223L465.544 244.068H457.939V185.1H476.659V267H461.098L412.66 208.032H420.265V267H401.545ZM480.241 267V254.715L530.902 193.641L533.242 200.544H481.177V185.1H550.09V197.385L499.546 258.459L497.206 251.556H551.845V267H480.241ZM549.728 267L586.232 185.1H604.952L641.573 267H621.683L591.731 194.694H599.219L569.15 267H549.728ZM567.98 249.45L573.011 235.059H615.131L620.279 249.45H567.98Z" fill="#545454"/>
+        <path d="M142 217.5C146.883 193.489 152.785 182.65 178 175.5C161.08 183.945 155.713 193.882 152 219C174.489 226.812 185.105 228.743 192.5 218C186.33 235.56 176.605 237.608 149 228.5C143.016 265.085 134.085 275.257 110 278C129.105 268.985 136.207 258.556 139.5 226C130.949 224.558 126.33 225.842 118.5 233C122.587 221.732 126.925 217.511 142 217.5Z" fill="#F47C28"/>
+        <path d="M153 234C149.404 257.174 143.293 265.669 128 276C149.425 268.592 156.973 259.934 162 236L153 234Z" fill="#F47C28"/>
+        <path d="M166.5 218C172.409 187.142 178.969 177.357 196.936 174.51C171.541 175.044 164.014 185.866 157.5 215.5L166.5 218Z" fill="#F47C28"/>
+      </svg>
+    </div>
   </nav>
 
   <section class="hero">
@@ -375,11 +348,11 @@
     <div class="hero-blob"></div>
 
     <div class="hero-content">
-      <div class="hero-badge">🇲🇦 &nbsp; Casablanca — الدار البيضاء</div>
+      <div class="hero-badge" style="direction:ltr;">المغرب &nbsp; 🇲🇦 &nbsp; Maroc</div>
 
       <h1>
         كل مشكل<br/>
-        <em>عندو</em> معلمو
+        <span>عندو معلمو</span>
       </h1>
 
       <p class="hero-sub">
@@ -441,15 +414,15 @@
           <div class="check">✅</div>
           <h3>طلبك وصل!</h3>
           <p>غادي نتواصلو معاك على واتساب فاقرب وقت ممكن<br/>
-          <span style="color:var(--clay); font-weight:700;">مع عروض من معلمين قريبين منك.</span></p>
+          <span style="color:var(--orange); font-weight:700;">مع عروض من معلمين قريبين منك.</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="zellige-divider"></div>
+  <div class="orange-divider"></div>
 
-  <section style="background: var(--cream);">
+  <section style="background: var(--white);">
     <div class="section">
       <p class="section-label">كيفاش خدام</p>
       <h2 class="section-title">3 خطوات وكاملات</h2>
@@ -490,7 +463,7 @@
     </div>
   </section>
 
-  <div class="zellige-divider"></div>
+  <div class="orange-divider"></div>
 
   <section class="trust-section">
     <div class="trust-inner">
@@ -511,7 +484,7 @@
 
   <footer>
     <div class="footer-social">
-      <a href="https://www.instagram.com/maalam.official" target="_blank" title="Instagram">
+      <a href="https://www.instagram.com/fixanza.official" target="_blank" title="Instagram">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61588919775378" target="_blank" title="Facebook">
@@ -527,7 +500,14 @@
       <a href="mailto:maalam.contact@gmail.com">Contact</a>
     </div>
     <div class="footer-divider"></div>
-    <p>&copy; 2025 <strong>Maâlem | معلم</strong> · Casablanca, Maroc</p>
+    <!-- White logo for dark footer -->
+    <svg class="footer-logo" viewBox="110 160 540 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M207.211 267V185.1H226.165V267H207.211ZM233.956 267L269.173 218.445V232.251L235.477 185.1H257.005L280.288 217.977L271.279 218.094L294.211 185.1H314.803L281.341 231.432V217.86L316.792 267H294.913L270.811 232.251H279.469L255.718 267H233.956ZM311.733 267L348.237 185.1H366.957L403.578 267H383.688L353.736 194.694H361.224L331.155 267H311.733ZM329.985 249.45L335.016 235.059H377.136L382.284 249.45H329.985ZM401.545 267V185.1H417.223L465.544 244.068H457.939V185.1H476.659V267H461.098L412.66 208.032H420.265V267H401.545ZM480.241 267V254.715L530.902 193.641L533.242 200.544H481.177V185.1H550.09V197.385L499.546 258.459L497.206 251.556H551.845V267H480.241ZM549.728 267L586.232 185.1H604.952L641.573 267H621.683L591.731 194.694H599.219L569.15 267H549.728ZM567.98 249.45L573.011 235.059H615.131L620.279 249.45H567.98Z" fill="rgba(255,255,255,0.6)"/>
+      <path d="M142 217.5C146.883 193.489 152.785 182.65 178 175.5C161.08 183.945 155.713 193.882 152 219C174.489 226.812 185.105 228.743 192.5 218C186.33 235.56 176.605 237.608 149 228.5C143.016 265.085 134.085 275.257 110 278C129.105 268.985 136.207 258.556 139.5 226C130.949 224.558 126.33 225.842 118.5 233C122.587 221.732 126.925 217.511 142 217.5Z" fill="#F47C28"/>
+      <path d="M153 234C149.404 257.174 143.293 265.669 128 276C149.425 268.592 156.973 259.934 162 236L153 234Z" fill="#F47C28"/>
+      <path d="M166.5 218C172.409 187.142 178.969 177.357 196.936 174.51C171.541 175.044 164.014 185.866 157.5 215.5L166.5 218Z" fill="#F47C28"/>
+    </svg>
+    <p>&copy; 2025 <strong>Fixanza</strong> · Casablanca, Maroc</p>
   </footer>
 
   <script>
@@ -539,13 +519,13 @@
       const desc = document.getElementById('desc').value.trim();
 
       if (!service || !city || !phone) {
-        alert('Please fill in service, city, and phone number');
+        alert('عافاك عبي الخدمة، المدينة، ورقم الهاتف');
         return;
       }
 
       const btn = document.querySelector('.submit-btn');
       btn.disabled = true;
-      btn.textContent = 'Sending...';
+      btn.textContent = '⏳ كنحيول...';
 
       try {
         const formData = new FormData();
@@ -567,9 +547,9 @@
 
       } catch (error) {
         console.error('Error:', error);
-        alert('Connection error, please try again');
+        alert('كاين مشكل في الاتصال، عاود حاول من فضلك');
         btn.disabled = false;
-        btn.innerHTML = 'Try again';
+        btn.innerHTML = '🔍 &nbsp; دوز طلبك للمعلمين';
       }
     }
 
