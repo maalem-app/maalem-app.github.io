@@ -3,61 +3,48 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maâlem | سجل كمعلم</title>
+  <title>Fixanza | سجل كمعلم</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --clay: #C4622D;
-      --clay-light: #E07A45;
-      --ink: #1C1410;
-      --ink-soft: #3D2B1F;
-      --cream: #FBF6EE;
-      --sand: #EAD9B8;
-      --gold: #D4A843;
+      --orange: #E8632A;
+      --orange-light: #F07840;
+      --charcoal: #1C1C1E;
+      --charcoal-card: #2A2A2C;
+      --cream: #F0F0F0;
     }
 
     body {
       font-family: 'Tajawal', sans-serif;
-      background: var(--ink);
+      background: var(--charcoal);
       color: var(--cream);
       min-height: 100vh;
-      padding: 0;
     }
 
+    /* HERO */
     .hero {
-      background: var(--clay);
-      padding: 2.5rem 1.5rem 3rem;
+      background: var(--charcoal);
+      padding: 2.5rem 1.5rem 2.5rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      border-bottom: 3px solid var(--orange);
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.03) 0px,
-        rgba(255,255,255,0.03) 1px,
-        transparent 1px,
-        transparent 30px
-      );
+    .hero-logo {
+      margin-bottom: 1.5rem;
     }
 
     .hero-badge {
       display: inline-block;
-      background: rgba(255,255,255,0.15);
-      color: white;
+      background: rgba(232,99,42,0.15);
+      color: var(--orange);
       font-size: 0.85rem;
       font-weight: 700;
       padding: 0.4rem 1.2rem;
       border-radius: 50px;
       margin-bottom: 1.2rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      position: relative;
+      border: 1px solid rgba(232,99,42,0.3);
     }
 
     .hero h1 {
@@ -66,70 +53,67 @@
       color: white;
       line-height: 1.2;
       margin-bottom: 0.8rem;
-      position: relative;
     }
+
+    .hero h1 span { color: var(--orange); }
 
     .hero p {
       font-size: 1rem;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.6);
       line-height: 1.6;
       max-width: 400px;
       margin: 0 auto 1.5rem;
-      position: relative;
     }
 
     .benefits {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
-      position: relative;
     }
 
     .benefit {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 50px;
-      padding: 0.4rem 1rem;
-      font-size: 0.85rem;
-      color: white;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
       font-weight: 600;
     }
 
+    /* NOT CLIENTS */
     .not-clients {
-      background: var(--gold);
-      color: var(--ink);
+      background: rgba(232,99,42,0.1);
+      border-bottom: 1px solid rgba(232,99,42,0.2);
+      color: rgba(255,255,255,0.6);
       text-align: center;
-      padding: 0.8rem 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
+    .not-clients a { color: var(--orange); font-weight: 800; }
+
+    /* FORM */
     .form-section {
-      max-width: 560px;
+      max-width: 540px;
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
     }
 
     .form-card {
-      background: #2A1F1A;
+      background: var(--charcoal-card);
       border-radius: 20px;
       padding: 2rem 1.5rem;
-      border: 1px solid rgba(196,98,45,0.3);
+      border: 1px solid rgba(232,99,42,0.15);
     }
 
     .form-card-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--cream);
       margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .form-group {
@@ -140,23 +124,20 @@
     }
 
     label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--sand);
+      color: rgba(255,255,255,0.45);
     }
 
-    .required {
-      color: var(--clay);
-      margin-right: 2px;
-    }
+    .required { color: var(--orange); margin-right: 2px; }
 
     select, input, textarea {
       font-family: 'Tajawal', sans-serif;
-      font-size: 1rem;
-      padding: 0.85rem 1rem;
-      border: 1.5px solid rgba(196,98,45,0.3);
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.08);
       border-radius: 12px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
       color: var(--cream);
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -165,57 +146,57 @@
       -webkit-appearance: none;
     }
 
-    select option { background: #2A1F1A; color: var(--cream); }
+    select option { background: var(--charcoal-card); color: var(--cream); }
 
     select:focus, input:focus, textarea:focus {
-      border-color: var(--clay);
-      box-shadow: 0 0 0 3px rgba(196,98,45,0.15);
-      background: rgba(255,255,255,0.08);
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(232,99,42,0.12);
+      background: rgba(255,255,255,0.07);
     }
 
-    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
 
-    textarea { resize: none; height: 90px; }
+    textarea { resize: none; height: 85px; }
 
     .divider {
       height: 1px;
-      background: rgba(196,98,45,0.2);
-      margin: 1.5rem 0;
+      background: rgba(255,255,255,0.07);
+      margin: 1.2rem 0;
     }
 
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 1.5px;
-      color: var(--clay);
+      color: var(--orange);
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .submit-btn {
       width: 100%;
-      background: var(--clay);
+      background: var(--orange);
       color: white;
       border: none;
-      padding: 1.1rem;
+      padding: 1rem;
       border-radius: 14px;
       font-family: 'Tajawal', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 900;
       cursor: pointer;
-      margin-top: 1.5rem;
+      margin-top: 1.2rem;
       transition: all 0.2s;
-      letter-spacing: 0.5px;
     }
 
     .submit-btn:hover {
-      background: var(--clay-light);
+      background: var(--orange-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(196,98,45,0.4);
+      box-shadow: 0 8px 24px rgba(232,99,42,0.35);
     }
 
     .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
+    /* SUCCESS */
     .success-msg {
       display: none;
       text-align: center;
@@ -229,85 +210,83 @@
     }
 
     .success-msg .check { font-size: 4rem; margin-bottom: 1rem; }
+    .success-msg h3 { font-size: 1.4rem; font-weight: 900; color: var(--orange); margin-bottom: 0.5rem; }
+    .success-msg p { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6; }
 
-    .success-msg h3 {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--clay);
-      margin-bottom: 0.6rem;
-    }
-
-    .success-msg p { color: var(--sand); font-size: 0.95rem; line-height: 1.6; }
-
+    /* HOW IT WORKS */
     .how-section {
-      max-width: 560px;
+      max-width: 540px;
       margin: 0 auto;
       padding: 0 1.5rem 4rem;
     }
 
     .how-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--cream);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       text-align: center;
     }
 
-    .how-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .how-steps { display: flex; flex-direction: column; gap: 0.8rem; }
 
     .how-step {
       display: flex;
       gap: 1rem;
       align-items: flex-start;
-      background: #2A1F1A;
-      border-radius: 14px;
-      padding: 1rem 1.2rem;
-      border: 1px solid rgba(196,98,45,0.2);
+      background: var(--charcoal-card);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
     .step-num {
-      width: 36px;
-      height: 36px;
-      background: var(--clay);
+      width: 32px;
+      height: 32px;
+      background: var(--orange);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 0.9rem;
       flex-shrink: 0;
       color: white;
     }
 
-    .step-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--cream); margin-bottom: 0.2rem; }
-    .step-content p { font-size: 0.82rem; color: var(--sand); opacity: 0.7; line-height: 1.5; }
+    .step-content h4 { font-size: 0.9rem; font-weight: 700; color: var(--cream); margin-bottom: 0.2rem; }
+    .step-content p { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
 
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 1.5rem;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.2);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    footer strong { color: var(--clay); }
+    footer a { color: var(--orange); text-decoration: none; }
 
     @media (max-width: 400px) {
       .hero h1 { font-size: 1.9rem; }
-      .benefits { gap: 0.5rem; }
     }
   </style>
 </head>
 <body>
 
   <div class="hero">
+    <div class="hero-logo">
+      <svg height="30" viewBox="100 170 560 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M207.211 267V185.1H226.165V267H207.211ZM233.956 267L269.173 218.445V232.251L235.477 185.1H257.005L280.288 217.977L271.279 218.094L294.211 185.1H314.803L281.341 231.432V217.86L316.792 267H294.913L270.811 232.251H279.469L255.718 267H233.956ZM311.733 267L348.237 185.1H366.957L403.578 267H383.688L353.736 194.694H361.224L331.155 267H311.733ZM329.985 249.45L335.016 235.059H377.136L382.284 249.45H329.985ZM401.545 267V185.1H417.223L465.544 244.068H457.939V185.1H476.659V267H461.098L412.66 208.032H420.265V267H401.545ZM480.241 267V254.715L530.902 193.641L533.242 200.544H481.177V185.1H550.09V197.385L499.546 258.459L497.206 251.556H551.845V267H480.241ZM549.728 267L586.232 185.1H604.952L641.573 267H621.683L591.731 194.694H599.219L569.15 267H549.728ZM567.98 249.45L573.011 235.059H615.131L620.279 249.45H567.98Z" fill="#D9D9D9"/>
+        <path d="M142 217.5C146.883 193.489 152.785 182.65 178 175.5C161.08 183.945 155.713 193.882 152 219C174.489 226.812 185.105 228.743 192.5 218C186.33 235.56 176.605 237.608 149 228.5C143.016 265.085 134.085 275.257 110 278C129.105 268.985 136.207 258.556 139.5 226C130.949 224.558 126.33 225.842 118.5 233C122.587 221.732 126.925 217.511 142 217.5Z" fill="#F47C28"/>
+        <path d="M153 234C149.404 257.174 143.293 265.669 128 276C149.425 268.592 156.973 259.934 162 236L153 234Z" fill="#F47C28"/>
+        <path d="M166.5 218C172.409 187.142 178.969 177.357 196.936 174.51C171.541 175.044 164.014 185.866 157.5 215.5L166.5 218Z" fill="#F47C28"/>
+      </svg>
+    </div>
     <div class="hero-badge">🔧 للمعلمين فقط</div>
-    <h1>سجل كمعلم<br/>على Maâlem</h1>
-    <p>انضم للمنصة وابدأ تستقبل طلبات خدمة من عملاء قريبين منك مباشرة على واتساب — مجاناً.</p>
+    <h1>سجل كمعلم — <span>مجاناً</span></h1>
+    <p>انضم وابدأ تستقبل طلبات خدمة من عملاء قريبين منك مباشرة على واتساب.</p>
     <div class="benefits">
       <span class="benefit">✅ مجاني بالكامل</span>
       <span class="benefit">📱 عبر واتساب</span>
@@ -315,9 +294,7 @@
     </div>
   </div>
 
-  <div class="not-clients">
-    ⚠️ هاد الصفحة غير للمعلمين — إلا كنت عميل <a href="https://maalem-app.github.io" style="color:var(--ink); font-weight:900; margin-right:4px;">اضغط هنا</a>
-  </div>
+
 
   <div class="form-section">
     <div class="form-card">
@@ -337,7 +314,6 @@
         </div>
 
         <div class="divider"></div>
-
         <p class="section-label">الخدمة والموقع</p>
 
         <div class="form-group">
@@ -380,11 +356,10 @@
         </div>
 
         <div class="divider"></div>
-
         <p class="section-label">تجربتك</p>
 
         <div class="form-group">
-          <label>شحال عندك من سنين تجربة؟</label>
+          <label>سنين التجربة</label>
           <select id="experience">
             <option value="">اختار...</option>
             <option>أقل من سنة</option>
@@ -396,7 +371,7 @@
         </div>
 
         <div class="form-group">
-          <label>واش كتقدر تجي بسرعة إلا كان الطلب عاجل؟</label>
+          <label>التوفر للطلبات العاجلة</label>
           <select id="availability">
             <option value="">اختار...</option>
             <option>إيه، متاح في أي وقت</option>
@@ -406,7 +381,7 @@
         </div>
 
         <div class="form-group">
-          <label>شي معلومة زيادة (اختياري)</label>
+          <label>ملاحظات (اختياري)</label>
           <textarea id="notes" placeholder="مثلاً: كنخدم فالحمامات والمطابخ، عندي فريق..."></textarea>
         </div>
 
@@ -418,14 +393,14 @@
       <div class="success-msg" id="success">
         <div class="check">✅</div>
         <h3>تسجيلك وصل!</h3>
-        <p>شكراً — غادي نتواصلو معاك على واتساب فأقرب وقت ممكن<br/>
-        <span style="color:var(--clay); font-weight:700;">ومن بعد تبدا تستقبل طلبات من عملاء قريبين منك.</span></p>
+        <p>غادي نتواصلو معاك على واتساب فأقرب وقت ممكن<br/>
+        <span style="color:var(--orange); font-weight:700;">ومن بعد تبدا تستقبل طلبات من عملاء قريبين منك.</span></p>
       </div>
     </div>
   </div>
 
   <div class="how-section">
-    <div class="how-title">كيفاش كيخدم معّلم؟ 🔧</div>
+    <div class="how-title">كيفاش كيخدم؟</div>
     <div class="how-steps">
       <div class="how-step">
         <div class="step-num">1</div>
@@ -438,7 +413,7 @@
         <div class="step-num">2</div>
         <div class="step-content">
           <h4>استقبل طلبات على واتساب</h4>
-          <p>كنبعثو ليك طلبات من عملاء قريبين منك مباشرة على واتساب</p>
+          <p>كنبعثو ليك طلبات من عملاء قريبين منك مباشرة</p>
         </div>
       </div>
       <div class="how-step">
@@ -459,7 +434,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2025 <strong>Maâlem | معّلم</strong> · <a href="https://maalem-app.github.io" style="color:var(--clay);">maalem-app.github.io</a></p>
+    <p>&copy; 2025 <a href="https://fixanza.com">Fixanza</a> · Maroc</p>
   </footer>
 
   <script>
